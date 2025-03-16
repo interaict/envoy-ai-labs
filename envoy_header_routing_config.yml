@@ -60,7 +60,7 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: 127.0.0.1
+                address: server-nginx
                 port_value: 8081
   - name: httpbin_service
     connect_timeout: 0.25s
@@ -73,7 +73,7 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: 127.0.0.1
+                address: server-httpbin
                 port_value: 8082
   - name: echo_service
     connect_timeout: 0.25s
@@ -86,7 +86,7 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: 127.0.0.1
+                address: server-echo
                 port_value: 8083
   - name: python_service
     connect_timeout: 0.25s
@@ -99,5 +99,5 @@ static_resources:
         - endpoint:
             address:
               socket_address:
-                address: 127.0.0.1
+                address: server-python
                 port_value: 8084
