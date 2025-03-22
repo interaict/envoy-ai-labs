@@ -43,7 +43,7 @@ static_resources:
   clusters:
   - name: nginx_service
     connect_timeout: 0.25s
-    type: STATIC
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       cluster_name: nginx_service
@@ -53,10 +53,10 @@ static_resources:
             address:
               socket_address:
                 address: server-nginx
-                port_value: 8081
+                port_value: 80
   - name: httpbin_service
     connect_timeout: 0.25s
-    type: STATIC
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       cluster_name: httpbin_service
@@ -66,10 +66,10 @@ static_resources:
             address:
               socket_address:
                 address: server-httpbin
-                port_value: 8082
+                port_value: 80
   - name: echo_service
     connect_timeout: 0.25s
-    type: STATIC
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       cluster_name: echo_service
@@ -79,10 +79,10 @@ static_resources:
             address:
               socket_address:
                 address: server-echo
-                port_value: 8083
+                port_value: 80
   - name: python_service
     connect_timeout: 0.25s
-    type: STATIC
+    type: STRICT_DNS
     lb_policy: ROUND_ROBIN
     load_assignment:
       cluster_name: python_service
@@ -92,4 +92,4 @@ static_resources:
             address:
               socket_address:
                 address: server-python
-                port_value: 8084
+                port_value: 80
