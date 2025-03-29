@@ -24,10 +24,15 @@ static_resources:
                 route: 
                   cluster: nginx_service
                   prefix_rewrite: "/"
-              - match: { prefix: "/httpbin" }
+              - match:
+                  prefix: "/"
+                  headers:
+                    - name: "service-name"
+                      exact_match: "httpbin"
+                    - name: "content-type"
+                      exact_match: "application/json"
                 route: 
                   cluster: httpbin_service
-                  prefix_rewrite: "/"
               - match: { prefix: "/echo" }
                 route: 
                   cluster: echo_service
