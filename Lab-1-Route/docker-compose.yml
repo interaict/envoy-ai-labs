@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  happyrun_service:
+    image: ealen/echo-server
+    container_name: happyrun_server
+    ports:
+      - "8081:80"
+
+  store_happyrun_service:
+    image: ealen/echo-server
+    container_name: store_happyrun_server
+    ports:
+      - "8082:80"
+
+  tutorial_happyrun_service:
+    image: ealen/echo-server
+    container_name: tutorial_happyrun_server
+    ports:
+      - "8083:80"
+
+  racing_happyrun_service:
+    image: ealen/echo-server
+    container_name: racing_happyrun_server
+    ports:
+      - "8084:80"
+
+  envoy:
+    image: envoyproxy/envoy:v1.29-latest
+    container_name: envoy
+    volumes:
+      - ./envoy_routing_config.yml:/etc/envoy/envoy.yaml
+    ports:
+      - "10000:10000"
+      - "9901:9901"
+    depends_on:
+      - happyrun_service
+      - store_happyrun_service
+      - tutorial_happyrun_service
+      - racing_happyrun_service
